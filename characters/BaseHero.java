@@ -2,33 +2,35 @@ package characters;
 
 import java.util.Random;
 
-public class BaseHero {
-    protected static int number;
-    protected static Random r;
+public abstract class BaseHero implements BaseInterfase {
 
-    protected String name;
+    protected static Random r;
+    protected static int number;
+
+    protected final String NAME;
     protected int hp;
     protected int maxHp;
+
+    public BaseHero(String name, int hp) {
+        NAME = name;
+        this.hp = hp;
+        this.maxHp = hp;
+    }
 
     static {
         BaseHero.number = 0;
         BaseHero.r = new Random();
     }
 
-    public BaseHero(String name, int hp) {
-        this.name = name;
-        this.hp = hp;
-        this.maxHp = hp;
-    }
-
-    public BaseHero() {
-        this(String.format("Базовый герой #%d", ++BaseHero.number),
-                BaseHero.r.nextInt(100, 200));
-    }
-
+    @Override
     public String getInfo() {
         return String.format("Имя: %s  Hp: %d  Тип: %s",
-                this.name, this.hp, this.getClass().getSimpleName());
+                this.NAME, this.hp, this.getClass().getSimpleName());
+    }
+
+    @Override
+    public void step() {
+        System.out.println("Ничего не делает");
     }
 
     public void healed(int Hp) {
@@ -39,11 +41,15 @@ public class BaseHero {
         if (this.hp - damage > 0) {
             this.hp -= damage;
         }
-        
+
     }
 
     public void Attack(BaseHero target) {
-        int damage = BaseHero.r.nextInt(10, 20);
+        int damage = 10;
         target.GetDamage(damage);
+    }
+
+    public void getNAME() {
+        System.out.println(NAME);
     }
 }
