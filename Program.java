@@ -1,68 +1,66 @@
 import java.util.Random;
 
-import characters.*;
+import characters.Class.BaseHero;
+import characters.Units.Crossbowman;
+import characters.Units.Magician;
+import characters.Units.Peasant;
+import characters.Units.Priest;
+import characters.Units.Robber;
+import characters.Units.Sniper;
+import characters.Units.Spearman;
+
 import java.util.ArrayList;
 
 public class Program {
     public static void main(String[] args) {
-
-        // BaseHero hero1 = new Priest();
-        // System.out.println(hero1.getInfo());
-
-        // BaseHero hero2 = new Peasant();
-        // System.out.println(hero2.getInfo());
-
-        // BaseHero Max = new Sniper();
-        // System.out.println(Max.getInfo());
-
-        // BaseHero Georg = new Spearman();
-        // System.out.println(Georg.getInfo());
-
-        // BaseHero Bond = new Robber();
-        // System.out.println(Bond.getInfo());
-
-        // BaseHero Mag = new Magician();
-        // System.out.println(Mag.getInfo());
-
-        // BaseHero Fin = new Crossbowman();
-        // System.out.println(Fin.getInfo());
         ArrayList<BaseHero> list = new ArrayList<>();
         ArrayList<BaseHero> list2 = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
 
-            switch (new Random().nextInt(3)) {
+            switch (new Random().nextInt(4)) {
                 case 0:
-                    list.add(new Crossbowman(getName()));
+                    list.add(new Crossbowman(BaseHero.getName()));
                     break;
                 case 1:
-                    list.add(new Priest(getName()));
+                    list.add(new Magician(BaseHero.getName()));
+                    break;
+                case 2:
+                    list.add(new Spearman(BaseHero.getName()));
                     break;
                 default:
-                    list.add(new Robber(getName()));
+                    list.add(new Peasant(BaseHero.getName()));
                     break;
             }
             switch (new Random().nextInt(4)) {
                 case 0:
-                    list2.add(new Spearman(getName()));
+                    list2.add(new Robber(BaseHero.getName()));
                     break;
                 case 1:
-                    list2.add(new Sniper(getName()));
+                    list2.add(new Sniper(BaseHero.getName()));
                     break;
                 case 2:
-                    list2.add(new Magician(getName()));
+                    list2.add(new Priest(BaseHero.getName()));
                     break;
                 default:
-                    list2.add(new Peasant(getName()));
+                    list2.add(new Peasant(BaseHero.getName()));
                     break;
             }
         }
 
-        list.forEach(u -> u.getNAME());
-    }
+        System.out.println("-------------\n Команда 1:");
+        for (BaseHero unit : list) {
+            System.out.printf(String.format("%s - ", unit.getInfo()));
+            unit.getNames();
+        }
 
-    private static String getName() {
-        return Names.values()[new Random().nextInt(Names.values().length)].toString();
+        System.out.println("-------------\n Команда 2:");
+        for (BaseHero unit2 : list2) {
+            System.out.printf(String.format("%s - ", unit2.getInfo()));
+            unit2.getNames();
+        }
+
+        // list.forEach(u -> u.step(list2, list));
     }
 
 }
