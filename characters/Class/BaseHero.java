@@ -5,6 +5,7 @@ import java.util.Random;
 
 import characters.Interfase.BaseInterfase;
 import characters.Interfase.Names;
+import characters.Interfase.Position;
 
 public abstract class BaseHero implements BaseInterfase {
 
@@ -18,8 +19,10 @@ public abstract class BaseHero implements BaseInterfase {
     protected int armor;
     protected int speed;
     protected int maxDamage;
+    protected String state;
+    public Position position;
 
-    public BaseHero(int hp, int speed, int damage, int maxDamage, int armor, String name) {
+    public BaseHero(int hp, int speed, int damage, int maxDamage, int armor, String name, int x, int y) {
         NAME = name;
         this.hp = hp;
         this.maxHp = hp;
@@ -27,6 +30,8 @@ public abstract class BaseHero implements BaseInterfase {
         this.damage = damage;
         this.maxDamage = maxDamage;
         this.armor = armor;
+        state = "Stand";
+        position = new Position(x, y);
     }
 
     static {
@@ -34,13 +39,11 @@ public abstract class BaseHero implements BaseInterfase {
         BaseHero.r = new Random();
     }
 
-    @Override
     public String getInfo() {
         return String.format("Имя: %s  Hp: %d  Тип: %s",
                 this.NAME, this.hp, this.getClass().getSimpleName());
     }
 
-    @Override
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
         System.out.println("Ход");
     }

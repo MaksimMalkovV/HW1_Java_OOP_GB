@@ -8,8 +8,8 @@ public class MagClass extends BaseHero {
         return mana;
     }
 
-    public MagClass(int hp, int speed, int damage, int maxDamage, int armor, int mana, String name) {
-        super(hp, speed, damage, maxDamage, armor, name);
+    public MagClass(int hp, int speed, int damage, int maxDamage, int armor, int mana, String name, int x, int y) {
+        super(hp, speed, damage, maxDamage, armor, name, x, y);
         this.mana = mana;
     }
 
