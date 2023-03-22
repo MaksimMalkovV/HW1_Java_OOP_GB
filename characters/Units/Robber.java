@@ -4,18 +4,19 @@ import characters.Class.StaminClass;
 
 public class Robber extends StaminClass {
 
-    private int gold;
-    private int maxGold;
-
     public Robber(String name, int x, int y) {
-        super(340, 330, 70, 80, 60, 450, name, x, y);
-        this.maxGold = Magician.r.nextInt(50, 150);
-        this.gold = maxGold;
+        super(10, 6, 4, 3, 8, 10, name, x, y);
     }
 
     @Override
     public String getInfo() {
-        return String.format("Разбойник Золото: %d", this.gold);
+        return "Разбойник";
     }
+
+    @Override
+    public String getName() {
+        return "Robber";
+    }
+
 
 }

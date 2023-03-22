@@ -1,14 +1,11 @@
 package characters.Units;
 
-
 import characters.Class.MagClass;
 
 public class Magician extends MagClass {
 
-
-
     public Magician(String name, int x, int y) {
-        super(380, 250, -33, -40, 40, 300, name, x, y);
+        super(30, 9, 5, 12, 17, 10, name, x, y);
     }
 
     @Override
@@ -16,5 +13,8 @@ public class Magician extends MagClass {
         return "Колдун";
     }
 
-
+    @Override
+    public String getName() {
+        return "Magician";
+    }
 }

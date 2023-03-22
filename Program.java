@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 import characters.Class.BaseHero;
 import characters.Units.Crossbowman;
@@ -10,61 +11,82 @@ import characters.Units.Sniper;
 import characters.Units.Spearman;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Program {
-    public static void main(String[] args) {
-        ArrayList<BaseHero> list = new ArrayList<>();
-        ArrayList<BaseHero> list2 = new ArrayList<>();
 
+    public static final int GANG_SIZE = 10;
+    public static ArrayList<BaseHero> whiteSide = new ArrayList<>();
+    public static ArrayList<BaseHero> darkSide = new ArrayList<>();
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Init();
+
+        while(true){
+            ConsoleView.view();
+            sc.nextLine();
+            step();
+        }
+    }
+
+    public static void Init() {
         for (int i = 0; i < 10; i++) {
 
             switch (new Random().nextInt(4)) {
                 case 0:
-                    list.add(new Crossbowman(BaseHero.getName(), 0, i));
+                whiteSide.add(new Crossbowman(BaseHero.assignName(), 0, i));
                     break;
                 case 1:
-                    list.add(new Magician(BaseHero.getName(), 0, i));
+                whiteSide.add(new Magician(BaseHero.assignName(), 0, i));
                     break;
                 case 2:
-                    list.add(new Spearman(BaseHero.getName(), 0, i));
+                whiteSide.add(new Spearman(BaseHero.assignName(), 0, i));
                     break;
                 default:
-                    list.add(new Peasant(BaseHero.getName(), 0, i));
+                whiteSide.add(new Peasant(BaseHero.assignName(), 0, i));
                     break;
             }
             switch (new Random().nextInt(4)) {
                 case 0:
-                    list2.add(new Robber(BaseHero.getName(), 9, i));
+                darkSide.add(new Robber(BaseHero.assignName(), 9, i));
                     break;
                 case 1:
-                    list2.add(new Sniper(BaseHero.getName(), 9, i));
+                darkSide.add(new Sniper(BaseHero.assignName(), 9, i));
                     break;
                 case 2:
-                    list2.add(new Priest(BaseHero.getName(), 9, i));
+                darkSide.add(new Priest(BaseHero.assignName(), 9, i));
                     break;
                 default:
-                    list2.add(new Peasant(BaseHero.getName(), 9, i));
+                darkSide.add(new Peasant(BaseHero.assignName(), 9, i));
                     break;
             }
         }
+    }    
 
-        System.out.println("-------------\n Команда 1:");
+    public static void step() {
+        ArrayList<BaseHero> list = new ArrayList<>();
+
+        list.addAll(darkSide);
+        list.addAll(whiteSide);
+        list.sort(new Comparator<BaseHero>() {
+            @Override
+            public int compare(BaseHero u1, BaseHero u2) {
+                if (u1.getSpeed() == u2.getSpeed()) {
+                    return 0;
+                } else if (u1.getSpeed() > u2.getSpeed()) {
+                    return 1;
+                } else
+                    return -1;
+            }
+        });
+
         for (BaseHero unit : list) {
-            System.out.printf(String.format("%s - ", unit.getInfo()));
-            unit.getNames();
-            System.out.printf("Позиция - %d, %d\n", unit.position.x, unit.position.y);
+            if (darkSide.contains(unit)) {
+                unit.step(whiteSide, darkSide);
+            } else
+                unit.step(darkSide, whiteSide);
         }
-        
-
-        System.out.println("-------------\n Команда 2:");
-        for (BaseHero unit : list2) {
-            System.out.printf(String.format("%s - ", unit.getInfo()));
-            unit.getNames();
-            System.out.printf("Позиция - %d, %d\n", unit.position.x, unit.position.y);
-        }
-
-        // list.forEach(u -> u.step(list2, list));
-
     }
-
 }
+
