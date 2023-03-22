@@ -40,7 +40,7 @@ public abstract class BaseHero implements BaseInterfase {
     }
 
     public String getInfo() {
-        String outStr = String.format("\t%-3s\t⚔️ %-3d\t\uD83D\uDEE1 %-3d\t♥️%-3d%%\t☠️%-3d\t        " , 0,0 , armor,(int) hp * 100/maxHp, damage);
+        String outStr = String.format("\t%-3s\t⚔️ %-3d\t\uD83D\uDEE1 %-3d\t♥%-3d%%\t☠️%-3d\t        " , 0,0 , armor,(int) hp * 100/maxHp, damage);
         return outStr;
 
     }

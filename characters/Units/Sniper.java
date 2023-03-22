@@ -11,10 +11,10 @@ public class Sniper extends ShooterClass {
         
     }
 
-    @Override
-    public String getInfo() {
-        return "Снайпер";
-    }
+    // @Override
+    // public String getInfo() {
+    //     return "Снайпер";
+    // }
 
     @Override
     public String getName() {

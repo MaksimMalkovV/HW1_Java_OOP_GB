@@ -8,10 +8,10 @@ public class Peasant extends BaseHero {
         super(1, 3, 1, 1, 1, name, x, y);
     }
 
-    @Override
-    public String getInfo() {
-        return "Крестьянин";
-    }
+    // @Override
+    // public String getInfo() {
+    //     return "Крестьянин";
+    // }
 
     @Override
     public String getName() {

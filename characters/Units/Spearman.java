@@ -9,10 +9,10 @@ public class Spearman extends StaminClass {
 
     }
 
-    @Override
-    public String getInfo() {
-        return "Копейщик";
-    }
+    // @Override
+    // public String getInfo() {
+    //     return "Копейщик";
+    // }
 
     @Override
     public String getName() {

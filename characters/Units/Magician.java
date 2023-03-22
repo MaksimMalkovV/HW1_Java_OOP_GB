@@ -8,10 +8,10 @@ public class Magician extends MagClass {
         super(30, 9, 5, 12, 17, 10, name, x, y);
     }
 
-    @Override
-    public String getInfo() {
-        return "Колдун";
-    }
+    // @Override
+    // public String getInfo() {
+    //     return "Колдун";
+    // }
 
     @Override
     public String getName() {

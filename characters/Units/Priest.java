@@ -8,10 +8,10 @@ public class Priest extends MagClass {
         super(30, 5, 4, 7, 12, 10, name, x, y);
     }
 
-    @Override
-    public String getInfo() {
-        return "Монах";
-    }
+    // @Override
+    // public String getInfo() {
+    //     return "Монах";
+    // }
 
     @Override
     public String getName() {

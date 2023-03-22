@@ -31,7 +31,7 @@ public class Program {
     }
 
     public static void Init() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < GANG_SIZE + 1; i++) {
 
             switch (new Random().nextInt(4)) {
                 case 0:
@@ -49,16 +49,16 @@ public class Program {
             }
             switch (new Random().nextInt(4)) {
                 case 0:
-                darkSide.add(new Robber(BaseHero.assignName(), 9, i));
+                darkSide.add(new Robber(BaseHero.assignName(), 10, i));
                     break;
                 case 1:
-                darkSide.add(new Sniper(BaseHero.assignName(), 9, i));
+                darkSide.add(new Sniper(BaseHero.assignName(), 10, i));
                     break;
                 case 2:
-                darkSide.add(new Priest(BaseHero.assignName(), 9, i));
+                darkSide.add(new Priest(BaseHero.assignName(), 10, i));
                     break;
                 default:
-                darkSide.add(new Peasant(BaseHero.assignName(), 9, i));
+                darkSide.add(new Peasant(BaseHero.assignName(), 10, i));
                     break;
             }
         }

@@ -8,10 +8,10 @@ public class Crossbowman extends ShooterClass {
         super(10, 4, 3, 3, 6, 16, name, x, y);
     }
 
-    @Override
-    public String getInfo() {
-        return "Арбалетчик";
-    }
+    // @Override
+    // public String getInfo() {
+    //     return "Арбалетчик";
+    // }
 
     @Override
     public String getName() {
