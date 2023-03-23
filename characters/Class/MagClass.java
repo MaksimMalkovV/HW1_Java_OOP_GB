@@ -14,5 +14,11 @@ public class MagClass extends BaseHero {
         this.mana = mana;
     }
 
-    
+    @Override
+    public String getInfo() {
+        String outStr = String.format("\t%-3s\tARM %-3d\tHP %-3d%%\tDM %-3d\tMN %-3s\t      ", getName(), armor,
+                (int) hp * 100 / maxHp, damage, mana);
+        return outStr;
+
+    }
 }

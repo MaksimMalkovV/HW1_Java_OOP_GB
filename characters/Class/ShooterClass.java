@@ -38,10 +38,13 @@ public class ShooterClass extends BaseHero {
         }
     }
 
-
     @Override
-    public String toString() {
-        return "Осталось стрел: " + String.valueOf(this.ammo);
+    public String getInfo() {
+        String outStr = String.format("\t%-3s\tARM %-3d\tHP %-3d%%\tDM %-3d\tAM %-3s\t      ", getName(), armor,
+                (int) hp * 100 / maxHp, damage, ammo);
+        return outStr;
+
     }
+    
 
 }

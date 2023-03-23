@@ -8,7 +8,7 @@ public class ConsoleView {
     private static final String top10 = formatDiv("a") + String.join("", Collections.nCopies(9, formatDiv("-b"))) + formatDiv("-c");
     private static final String mid10 = formatDiv("d") + String.join("", Collections.nCopies(9, formatDiv("-e"))) + formatDiv("-f");
     private static final String bottom10 = formatDiv("g") + String.join("", Collections.nCopies(9, formatDiv("-h"))) + formatDiv("-i");
-    public static void view(){
+    public static void view(){ 
         if (step++ == 0) {
             System.out.print(AnsiColors.ANSI_RED+"First step!"+AnsiColors.ANSI_RESET);
             System.out.print(AnsiColors.ANSI_GREEN +

@@ -11,6 +11,14 @@ public class StaminClass extends BaseHero {
     }
 
     @Override
+    public String getInfo() {
+        String outStr = String.format("\t%-3s\tARM %-3d\tHP %-3d%%\tDM %-3d\tST %-3s\t      ", getName(), armor,
+                (int) hp * 100 / maxHp, damage, stamina);
+        return outStr;
+
+    }
+
+    @Override
     public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends){
         if (this.stamina > 0 && this.hp > 0) {
     

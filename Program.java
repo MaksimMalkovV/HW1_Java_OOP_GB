@@ -20,31 +20,33 @@ public class Program {
     public static ArrayList<BaseHero> darkSide = new ArrayList<>();
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Init();
+        try (Scanner sc = new Scanner(System.in)) {
+            Init();
 
-        while(true){
-            ConsoleView.view();
-            sc.nextLine();
-            step();
+            while(true){
+                ConsoleView.view();
+                sc.nextLine();
+                step();
+            }
         }
+        
     }
 
     public static void Init() {
-        for (int i = 0; i < GANG_SIZE + 1; i++) {
+        for (int i = 0; i < GANG_SIZE  ; i++) {
 
             switch (new Random().nextInt(4)) {
                 case 0:
-                whiteSide.add(new Crossbowman(BaseHero.assignName(), 0, i));
+                whiteSide.add(new Crossbowman(BaseHero.assignName(), 5, i));
                     break;
                 case 1:
-                whiteSide.add(new Magician(BaseHero.assignName(), 0, i));
+                whiteSide.add(new Magician(BaseHero.assignName(), 5, i));
                     break;
                 case 2:
-                whiteSide.add(new Spearman(BaseHero.assignName(), 0, i));
+                whiteSide.add(new Spearman(BaseHero.assignName(), 5, i));
                     break;
                 default:
-                whiteSide.add(new Peasant(BaseHero.assignName(), 0, i));
+                whiteSide.add(new Peasant(BaseHero.assignName(), 5, i));
                     break;
             }
             switch (new Random().nextInt(4)) {

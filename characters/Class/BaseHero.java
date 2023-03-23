@@ -14,13 +14,10 @@ public abstract class BaseHero implements BaseInterfase {
 
     protected final String NAME;
     public int hp;
-    protected int maxHp;
-    protected int damage;
-    protected int armor;
-    protected int speed;
-    protected int attack;
+    protected int maxHp, damage, armor, speed, attack;
     protected String state;
     public Position position;
+    public String type;
 
     public BaseHero(int hp, int speed, int damage, int attack, int armor, String name, int x, int y) {
         NAME = name;
@@ -32,6 +29,7 @@ public abstract class BaseHero implements BaseInterfase {
         this.armor = armor;
         state = "Stand";
         position = new Position(x, y);
+        this.type = this.getClass().getName().split("\\.")[1];
     }
 
     static {
@@ -40,7 +38,8 @@ public abstract class BaseHero implements BaseInterfase {
     }
 
     public String getInfo() {
-        String outStr = String.format("\t%-3s\t⚔️ %-3d\t\uD83D\uDEE1 %-3d\t♥%-3d%%\t☠️%-3d\t        " , 0,0 , armor,(int) hp * 100/maxHp, damage);
+        String outStr = String.format("\t%-3s\tARM %-3d\tHP %-3d%%\tDM %-3d\t      ", getName(), armor,
+                (int) hp * 100 / maxHp, damage);
         return outStr;
 
     }
@@ -82,7 +81,13 @@ public abstract class BaseHero implements BaseInterfase {
     }
 
     public String getName() {
-        return "Base";
+        return this.getClass().getName().split("\\.")[1];
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + NAME + "Type: " + getInfo() + "Attack: " + attack + "Armor: " + armor + "Damage: " + damage
+                + "Speed: " + speed;
     }
 
     public static String assignName() {
