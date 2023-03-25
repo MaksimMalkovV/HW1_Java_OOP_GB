@@ -15,12 +15,12 @@ public class ShooterClass extends BaseHero {
     @Override
     public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends) {
         if (this.ammo > 0 && this.hp > 0) {
-    
-            BaseHero target = team.get(0);
-            double minDistance = this.position.getDistance(team.get(0));
+
+            BaseHero target = null;
+            double minDistance = Double.MAX_VALUE;
 
             for (BaseHero unit : team) {
-                if(this.position.getDistance(unit)<minDistance){
+                if (this.position.getDistance(unit) < minDistance) {
                     minDistance = this.position.getDistance(unit);
                     target = unit;
                 }
@@ -31,7 +31,7 @@ public class ShooterClass extends BaseHero {
         }
 
         for (BaseHero unit : friends) {
-            if (unit.getName().equals("Peasant")) {      //unit.getName().equals("Peasant")
+            if (unit.getName().equals("Peasant")) { 
                 this.ammo++;
                 break;
             }
@@ -45,6 +45,5 @@ public class ShooterClass extends BaseHero {
         return outStr;
 
     }
-    
 
 }
